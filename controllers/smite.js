@@ -75,7 +75,7 @@ router.get("/update", (req, res) => {
 })
 
 router.get("/find", (req, res) => {
-    console.log(God.find({name: 'Hades'}))
+    God.find({name: 'Hades'}).then((hades) => console.log(hades))
     res.send("Hades in the terminal")
 })
 
