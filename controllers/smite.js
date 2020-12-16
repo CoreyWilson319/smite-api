@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const God = require('../models/gods')
 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
     const god1 = new God({
         name: 'Achilles',
     });
@@ -60,14 +60,14 @@ router.get("/", (req, res) => {
     res.send("Hello from smite");
   });
 
-router.get("/remove", (req,res) => {
+router.delete("/remove", (req,res) => {
     God.deleteOne({name: 'Hades'}, function(err) {
         if (err) console.log(err);
         res.send("removing god")
     })
 })
 
-router.get("/update", (req, res) => {
+router.put("/update", (req, res) => {
     God.findOneAndUpdate({name: 'Hades'}, {$set: {name: 'Not Hades'}}, function(err) {
         if (err) console.log(err);
         res.send("updated hades")
