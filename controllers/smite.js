@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
     });
     const meleeGuardian = { class: 'Guardian', attack: 'melee' }
     const meleeWarrior = { class: 'Warrior', attack: 'melee' }
+    const meleeAssassin = { class: 'Assassin', attack: 'melee' }
     const rangedHunter = { class: "Hunter", attack: "ranged"}
     const rangedMage = { class: "Mage", attack: "ranged"}
 
@@ -26,7 +27,22 @@ router.get("/", (req, res) => {
     const god5 = new God({
         name: 'Hades'
     })
-    god5.class.push(meleeGuardian)
+
+    const god6 = new God({
+        name: 'Awilix'
+    })
+
+    god6.class.push(meleeAssassin)
+    god6.save()
+
+    const god7 = new God({
+        name: 'Kali'
+    })
+
+    god7.class.push(meleeAssassin)
+    god7.save()
+
+    god5.class.push(rangedMage)
     god5.save()
 
     god4.class.push(rangedMage)
@@ -59,7 +75,7 @@ router.get("/update", (req, res) => {
 })
 
 router.get("/find", (req, res) => {
-    console.log(God.find({_id: 'ObjectId("5fd9515bc591adf563147db3")'}))
+    console.log(God.find({name: 'Hades'}))
     res.send("Hades in the terminal")
 })
 
